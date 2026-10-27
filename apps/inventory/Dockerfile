@@ -26,11 +26,21 @@ COPY . .
 # that don't ship one. Next.js standalone tolerates an empty public dir.
 RUN mkdir -p public && npm run build
 
+FROM node:24-alpine AS python-deps
+RUN apk add --no-cache python3 py3-pip
+WORKDIR /backend
+COPY backend/pyproject.toml ./
+COPY backend/app ./app
+RUN python3 -m venv /opt/venv && \
+    /opt/venv/bin/pip install --no-cache-dir .
+
 FROM node:24-alpine AS runner
 WORKDIR /app
+RUN apk add --no-cache python3
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
+ENV FASTAPI_URL=http://127.0.0.1:8000
 COPY --from=builder --chown=node:node /app/.next/standalone ./
 COPY --from=builder --chown=node:node /app/.next/static ./.next/static
 COPY --from=builder --chown=node:node /app/public ./public
@@ -40,6 +50,9 @@ COPY --from=builder --chown=node:node /app/public ./public
 COPY --from=builder --chown=node:node /app/node_modules/drizzle-orm ./node_modules/drizzle-orm
 COPY --from=builder --chown=node:node /app/drizzle/migrations ./drizzle/migrations
 COPY --from=builder --chown=node:node /app/migrate.js ./migrate.js
+COPY --from=python-deps --chown=node:node /opt/venv /opt/venv
+COPY --chown=node:node backend/app ./backend/app
+COPY --chown=node:node start.mjs ./start.mjs
 USER node
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["node", "start.mjs"]

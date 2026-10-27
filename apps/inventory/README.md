@@ -8,8 +8,13 @@ calcite monorepo under `apps/<slug>/` and is deployed from the platform UI.
 ```bash
 npm install
 npm run dev        # http://localhost:3000, DB settings from .env.local
+npm run dev:backend # FastAPI on http://localhost:8000 (run separately)
 npm test           # backend (jest, testcontainers) + frontend (vitest)
 ```
+
+The browser calls `/api/todos` on Next.js. Those routes proxy to FastAPI using
+`FASTAPI_URL` (default `http://127.0.0.1:8000`). The production container starts
+both services, and both write to the same container stdout/stderr stream.
 
 `npm run docker:smoke` builds the production image and boots it the way a
 deploy does (migrations container, then the app with the `/api/health`
