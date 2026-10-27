@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { todos, type Todo } from "../todos/store";
+import { todos, type Todo } from "../store";
 
 export async function PATCH(
   request: NextRequest,
