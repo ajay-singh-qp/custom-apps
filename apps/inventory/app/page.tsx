@@ -3,6 +3,7 @@ import { count, sql } from "drizzle-orm";
 import { db } from "../db";
 import { posts } from "../db/schema";
 import { DbProbeResult, IDbProbe } from "./_components/DbProbeResult";
+import { TerminalLogButton } from "./_components/TerminalLogButton";
 
 // Opt out of Next.js static prerendering. Without this the page is
 // rendered at `next build` time inside the Docker builder — where the
@@ -48,6 +49,7 @@ export default async function Home() {
       <p>
         Edit <code>app/page.tsx</code> and push to deploy.
       </p>
+      <TerminalLogButton />
       <h2>Database connection</h2>
       <DbProbeResult probe={probe} />
     </>
