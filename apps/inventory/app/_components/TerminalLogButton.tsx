@@ -1,10 +1,12 @@
 "use client";
 
+import { logToTerminal } from "../actions";
+
 export function TerminalLogButton() {
   return (
     <button
       type="button"
-      onClick={() => console.log("Inventory app: terminal log button clicked")}
+      onClick={() => void logToTerminal()}
       style={{
         marginTop: "1rem",
         padding: "0.75rem 1rem",

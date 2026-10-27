@@ -3,6 +3,7 @@ import { count, sql } from "drizzle-orm";
 import { db } from "../db";
 import { posts } from "../db/schema";
 import { DbProbeResult, IDbProbe } from "./_components/DbProbeResult";
+import { TerminalLogButton } from "./_components/TerminalLogButton";
 import { TodoApp } from "./_components/TodoApp";
 
 // Opt out of Next.js static prerendering. Without this the page is
@@ -51,6 +52,7 @@ export default async function Home() {
       </p>
 
       <TodoApp />
+      <TerminalLogButton />
 
       <h2>Database connection</h2>
       <DbProbeResult probe={probe} />
