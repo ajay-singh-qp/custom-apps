@@ -1,1 +1,0 @@
-"""Inventory backend application package."""
