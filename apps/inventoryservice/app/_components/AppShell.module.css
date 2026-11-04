@@ -1,0 +1,33 @@
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.appLayoutBody {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.appLayoutSidebar {
+  flex: 1;
+}
+
+.appLayoutContent {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.appLayoutFooter {
+  position: relative;
+  z-index: 10;
+}
+
+.sidebarNavLink {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
