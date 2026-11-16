@@ -1,5 +1,11 @@
-import "dotenv/config";
+import { loadEnvConfig } from "@next/env";
 import { defineConfig } from "drizzle-kit";
+
+// Same env files and precedence as `next dev` (dev mode: drizzle-kit only
+// runs on a laptop). The platform-generated `.env.development` carries this
+// app's DB_* for local development.
+const DEV_MODE = true;
+loadEnvConfig(process.cwd(), DEV_MODE);
 
 export default defineConfig({
   schema: "./db/schema.ts",

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:create": "node scripts/db-create.mjs",
     "test:be": "jest --config jest.config.ts",
     "test:fe": "vitest run",
     "test": "npm run test:be && npm run test:fe",
@@ -18,7 +19,6 @@
     "@npm-questionpro/questionpro-global-oauth": "^3.7.0",
     "@npm-questionpro/wick-ui-icon": "^2.23.0",
     "@npm-questionpro/wick-ui-lib": "^2.23.0",
-    "dotenv": "^16.4.0",
     "drizzle-orm": "^0.38.0",
     "iron-session": "^8.0.0",
     "next": "^15.0.0",
@@ -27,6 +27,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@next/env": "^15.0.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/jest": "^29.5.0",
