@@ -44,7 +44,7 @@ export default async function Home() {
   const probe = await probeDb();
   return (
     <>
-      <h1>Welcome to your Custom App</h1>
+      <h1>Hello To Custom Apps Platform</h1>
       <p>
         Edit <code>app/page.tsx</code> and push to deploy.
       </p>

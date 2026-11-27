@@ -12,7 +12,7 @@ import { resolveShellUser } from "@/lib/oauth/shell-user";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Custom App",
+  title: "Welcome to Ajay",
   description: "Scaffolded by Custom Apps",
 };
 
